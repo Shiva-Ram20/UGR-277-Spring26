@@ -1,0 +1,6 @@
+﻿input_text,generic_label,generic_score,finetuned_a_label,finetuned_a_scores,finetuned_b_label,finetuned_b_scores,winner,notes,tested_at
+A critical vulnerability affecting software in your stack is actively being exploited and includes matching IOCs from your logs.,NEGATIVE,0.9982,LABEL_0,0.9985,LABEL_0,0.9003,,,4/28/2026 4:22pm
+A medium-severity vulnerability targets software your organization uses but shows no signs of active exploitation.,NEGATIVE,0.9977,LABEL_1,0.8607,LABEL_0,0.8326,,,4/28/2026 4:22pm
+A high-severity threat is widely exploited but does not affect any technologies in your environment.,NEGATIVE,0.9914,LABEL_1,0.9862,LABEL_0,0.9283,,,4/28/2026 4:22pm
+A low-severity alert includes an IP address that appears in your network logs but has no software match.,NEGATIVE,0.9994,LABEL_0,0.9998,LABEL_0,0.8509,,,4/28/2026 4:22pm
+An older high-severity vulnerability affects your systems but has not been exploited in recent years.,POSITIVE,0.5066,LABEL_0,0.9895,LABEL_0,0.9275,,,4/28/2026 4:22pm
