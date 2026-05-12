@@ -1,0 +1,11 @@
+﻿input_text,model_1_sentiment_label,model_1_sentiment_score ,model_2_zeroshot_label ,model_2_zeroshot_score ,model_3_ner_entities,model_4_groq_classification,notes,tested_at
+,NEGATIVE,0.9961,threat intelligence,0.6,"{""entity_group"":""LOC"",""score"":0.9996966,""word"":""Moscow"",""start"":50,""end"":56}","**HIGH**
+This alert is classified as HIGH due to the unauthorized nature of the login attempt, potentially indicating a malicious actor attempting to access sensitive user data.",,4/23/2026 1:25pm
+,NEGATIVE,0.9985,unverified report,0.5,{},"INFORMATIONAL
+
+This alert is informational as it indicates a routine maintenance activity has been completed without any indications of issues or anomalies.",,4/23/2026 1:25pm
+,NEGATIVE,0.9952,threat intelligence,0.6,"{""entity_group"":""ORG"",""score"":0.9969963,""word"":""Amazon"",""start"":28,""end"":34}",HIGH: A phishing email with a spoofed Amazon domain targeting a finance email account poses a significant risk of financial loss or data theft to ACME Corp.,,4/23/2026 1:25pm
+,NEGATIVE,0.9994,threat intelligence,0.5,"{""entity_group"":""MISC"",""score"":0.9697967,""word"":""SS"",""start"":16,""end"":18}","CRITICAL: This alert indicates a potential brute-force attack on a Cloudflare production server, suggesting a high level of sophistication and effort from the attacker, which warrants immediate attention.",,4/23/2026 1:25pm
+,NEGATIVE,0.9880,unverified report,0.7,{},"INFO
+
+No critical anomalies were detected, so this alert does not indicate any immediate threats or issues.",,4/23/2026 1:25pm
