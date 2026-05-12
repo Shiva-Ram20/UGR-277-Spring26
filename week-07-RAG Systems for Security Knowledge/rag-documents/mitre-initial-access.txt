@@ -1,0 +1,73 @@
+Content Injection
+
+Adversaries may gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic. Rather than luring victims to malicious payloads hosted on a compromised website (i.e., Drive-by Target followed by Drive-by Compromise), adversaries may initially access victims through compromised data-transfer channels where they can manipulate traffic and/or inject their own content. These compromised online network channels may also be used to deliver additional payloads (i.e., Ingress Tool Transfer) and other data to already compromised systems.[1]
+
+Adversaries may inject content to victim systems in various ways, including:
+
+From the middle, where the adversary is in-between legitimate online client-server communications (Note: this is similar but distinct from Adversary-in-the-Middle, which describes AiTM activity solely within an enterprise environment) [2]
+From the side, where malicious content is injected and races to the client as a fake response to requests of a legitimate online server [3]
+Content injection is often the result of compromised upstream communication channels, for example at the level of an internet service provider (ISP) as is the case with "lawful interception."
+
+Procedure Examples
+ID	Name	Description
+S1088	Disco	
+Disco has achieved initial access and execution through content injection into DNS, HTTP, and SMB replies to targeted hosts that redirect them to download malicious files.[5]
+
+G1019	MoustachedBouncer	
+MoustachedBouncer has injected content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page to download malware.[5]
+
+
+Phishing
+
+Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.
+
+Adversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source, as well as evasive techniques such as removing or manipulating emails or metadata/headers from compromised accounts being abused to send messages (e.g., Email Hiding Rules).[1][2] Another way to accomplish this is by Email Spoofing[3] the identity of the sender, which can be used to fool both the human recipient as well as automated security tools,[4] or by including the intended target as a party to an existing email thread that includes malicious files or links (i.e., "thread hijacking").[5]
+
+Victims may also receive phishing messages that instruct them to call a phone number where they are directed to visit a malicious URL, download malware,[6][7] or install adversary-accessible remote management tools onto their computer (i.e., User Execution).[8]
+
+Procedure Examples
+ID	Name	Description
+G1049	AppleJeus	
+AppleJeus has used spearphishing emails to distribute malicious payloads.
+
+G0001	Axiom	
+Axiom has used spear phishing to initially compromise victims.[10][11]
+
+G0115	GOLD SOUTHFIELD	
+GOLD SOUTHFIELD has conducted malicious spam (malspam) campaigns to gain access to victim's machines.[12]
+
+S0009	Hikit	
+Hikit has been spread through spear phishing.[11]
+
+G1032	INC Ransom	
+INC Ransom has used phishing to gain initial access.[13][14]
+
+S1139	INC Ransomware	
+INC Ransomware campaigns have used spearphishing emails for initial access.[14]
+
+G0094	Kimsuky	
+Kimsuky has used spearphishing to gain initial access and intelligence.[15][16]
+
+G0069	MuddyWater	
+MuddyWater has sent phishing emails to targets from the email address support@microsoftonlines[.]com.[17]
+
+S1073	Royal	
+Royal has been spread through the use of phishing campaigns including "call back phishing" where victims are lured into calling a number provided through email.[18][19][20]
+
+G1041	Sea Turtle	
+Sea Turtle used spear phishing to gain initial access to victims.[21]
+
+G1055	VOID MANTICORE	
+VOID MANTICORE has emailed victims threatening messages.[22] VOID MANTICORE has used phishing as an initial access vector.[23]
+
+
+Hardware Additions
+
+Adversaries may physically introduce computer accessories, networking hardware, or other computing devices into a system or network that can be used as a vector to gain access. Rather than just connecting and distributing payloads via removable storage (i.e. Replication Through Removable Media), more robust hardware additions can be used to introduce new functionalities and/or features into a system that can then be abused.
+
+While public references of usage by threat actors are scarce, many red teams/penetration testers leverage hardware additions for initial access. Commercial and open source products can be leveraged with capabilities such as passive network tapping, network traffic modification (i.e. Adversary-in-the-Middle), keystroke injection, kernel memory reading via DMA, addition of new wireless access points to an existing network, and others.[1][2][3][4]
+
+Procedure Examples
+ID	Name	Description
+G0105	DarkVishnya	
+DarkVishnya physically connected Bash Bunny, Raspberry Pi, netbooks, and inexpensive laptops to the target organization's environment to access the company’s local network

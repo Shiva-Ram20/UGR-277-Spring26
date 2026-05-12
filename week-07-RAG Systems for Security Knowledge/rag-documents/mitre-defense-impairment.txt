@@ -1,0 +1,87 @@
+Disable or Modify Tools: Modify or Spoof Tool UI
+
+Adversaries may spoof or manipulate security tool user interfaces (UIs) to falsely indicate tools are functioning normally and delay detection and response.
+
+Adversaries may present misleading or falsified security tool interfaces (UIs) that display normal or healthy status indicators, even when underlying security tools have been disabled, degraded, or otherwise tampered with. Security tools typically provide visibility into system health, alerting, and operational status; by misrepresenting this information, adversaries can undermine defender trust in these signals and obscure the true security posture of the system.
+
+This behavior is often used in conjunction with efforts to disable or modify tools, where adversaries first impair the functionality of defenses (e.g., EDR, logging agents) and then replace or mimic their interfaces to conceal the loss of visibility. By maintaining the appearance of normal operations, such as showing active protection, successful updates, or absence of threats, adversaries can delay investigation and response, enabling continued malicious activity.
+
+For example, adversaries may display a fake Windows Security interface or system tray icon indicating a "protected" or "healthy" state after disabling Windows Defender or related services.[1]
+
+Procedure Examples
+ID	Name	Description
+S9014	PHASEJAM	
+PHASEJAM has prevented legitimate Ivanti Connect Secure system upgrades by intercepting the upgrade command and rendering fake HTML upgrade progress bar through a function called processUpgradeDisplay() which allowed the compromised device to remain under the control of the adversary.[2]
+
+
+Plist File Modification
+
+Adversaries may modify property list files (plist files) to enable other malicious activity, while also potentially evading and bypassing system defenses. macOS applications use plist files, such as the info.plist file, to store properties and configuration settings that inform the operating system how to handle the application at runtime. Plist files are structured metadata in key-value pairs formatted in XML based on Apple's Core Foundation DTD. Plist files can be saved in text or binary format.[1]
+
+Adversaries can modify key-value pairs in plist files to influence system behaviors, such as hiding the execution of an application (i.e. Hidden Window) or running additional commands for persistence (ex: Launch Agent/Launch Daemon or Re-opened Applications).
+
+For example, adversaries can add a malicious application path to the ~/Library/Preferences/com.apple.dock.plist file, which controls apps that appear in the Dock. Adversaries can also modify the LSUIElement key in an application’s info.plist file to run the app in the background. Adversaries can also insert key-value pairs to insert environment variables, such as LSEnvironment, to enable persistence via Dynamic Linker Hijacking.[2][3]
+
+Procedure Examples
+ID	Name	Description
+S1153	Cuckoo Stealer	
+Cuckoo Stealer can create and populate property list (plist) files to enable execution.[4][5]
+
+S0658	XCSSET	
+In older versions, XCSSET uses the plutil command to modify the LSUIElement, DFBundleDisplayName, and CFBundleIdentifier keys in the /Contents/Info.plist file to change how XCSSET is visible on the system. In later versions, XCSSET leverages a third-party notarized dockutil tool to modify the .plist file responsible for presenting applications to the user in the Dock and LaunchPad to point to a malicious application.[6][7]
+
+
+File and Directory Permissions Modification: Linux and Mac Permissions
+
+Adversaries may modify file or directory permissions/attributes to evade access control lists (ACLs) and access protected files.[1][2] File and directory permissions are commonly managed by ACLs configured by the file or directory owner, or users with the appropriate permissions. File and directory ACL implementations vary by platform, but generally explicitly designate which users or groups can perform which actions (read, write, execute, etc.).
+
+Most Linux and Linux-based platforms provide a standard set of permission groups (user, group, and other) and a standard set of permissions (read, write, and execute) that are applied to each group. While nuances of each platform’s permissions implementation may vary, most of the platforms provide two primary commands used to manipulate file and directory ACLs: chown (short for change owner), and chmod (short for change mode).
+
+Adversarial may use these commands to make themselves the owner of files and directories or change the mode if current permissions allow it. They could subsequently lock others out of the file. Specific file and directory modifications may be a required step for many techniques, such as establishing Persistence via Unix Shell Configuration Modification or tainting/hijacking other instrumental binary/configuration files via Hijack Execution Flow.[3]
+
+Procedure Examples
+ID	Name	Description
+G0050	APT32	
+APT32's macOS backdoor changes the permission of the file it wants to execute to 755.[4]
+
+S1070	Black Basta	
+The Black Basta binary can use chmod to gain full permissions to targeted files.[5]
+
+S0482	Bundlore	
+Bundlore changes the permissions of a payload using the command chmod -R 755.[3]
+
+S1105	COATHANGER	
+COATHANGER will set the GID of httpsd to 90 when infected.[6]
+
+S0281	Dok	
+Dok gives all users execute permissions for the application using the command chmod +x /Users/Shared/AppStore.app.[7]
+
+S9013	DRYHOOK	
+DRYHOOK has the ability to remount the filesystem as "read-write" to make changes and then restores it to "read-only" prior to killing processes to apply the modifications.[8][9]
+
+S0599	Kinsing	
+Kinsing has used chmod to modify permissions on key files for use.[10]
+
+C0035	KV Botnet Activity	
+KV Botnet Activity altered permissions on downloaded tools and payloads to enable execution on victim machines.[11]
+
+S0402	OSX/Shlayer	
+OSX/Shlayer can use the chmod utility to set a file as executable, such as chmod 777 or chmod +x.[3][12][13]
+
+S0352	OSX_OCEANLOTUS.D	
+OSX_OCEANLOTUS.D has changed permissions of a second-stage payload to an executable via chmod.[14]
+
+S0598	P.A.S. Webshell	
+P.A.S. Webshell has the ability to modify file permissions.[15]
+
+S0587	Penquin	
+Penquin can add the executable flag to a downloaded file.[16]
+
+G0106	Rocke	
+Rocke has changed file permissions of files so they could not be modified.[17]
+
+G0139	TeamTNT	
+TeamTNT has modified the permissions on binaries with chattr.[18][19]
+
+S0658	XCSSET	
+XCSSET uses the chmod +x command to grant executable permissions to the malicious file.[3]
